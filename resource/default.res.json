@@ -1,0 +1,495 @@
+{
+	"groups": [
+		{
+			"keys": "ui_bigbox_hit_png,ui_blackbase_png,ui_box_general_png,ui_box_gift_png,ui_experience_png,ui_help_png,ui_level_png,ui_money_sec_png,ui_money_total_png,ui_ranking_png,ui_recycle_png,ui_share_01_png,ui_shop_png,ui_sound_close_png,ui_sound_open_png,ui_time_base_png,ui_base_count_png,scene_01_back_png,scene_01_base_big_png,scene_01_base_big_lock_png,scene_01_base_small_png,scene_01_base_small_lock_png,scene_01_front_png,bgSound,sound_box_down,sound_house_merge,sound_house_new,sound_click,sound_close,sound_level_up,sound_newland,start_bg,start_btn,e1_png,e2_png,e3_png,e4_png,e5_png,e6_png,e7_png,e8_png,ranking_close_png,shop_close_png,shop_money_01_png,shop_money_02_png,shop_new_png,shop_reward_share_png,shop_reward_video_png,shop_base_png,shop_buy_01_png,shop_buy_02_png,shop_buy_lock_png,shop_card_png,reclaim_base_png,reclaim_cancel_png,reclaim_check_png,reclaim_sure_png,new_share_png,e7_black_png,e8_black_png,e1_black_png,e2_black_png,e3_black_png,e4_black_png,e5_black_png,e6_black_png,e8_big_png,e1_big_png,e2_big_png,e3_big_png,e4_big_png,e5_big_png,e6_big_png,e7_big_png,available_buy_house_json,buy_house_config_json,housedown_config_json,level_data_json,zero_config_json,loading_march_02_png,loading_march_03_png,loading_start_png,loading_base_png,loading_march_01_png,map_data_json,new_base_png",
+			"name": "preload"
+		}
+	],
+	"resources": [
+		{
+			"name": "bg_jpg",
+			"type": "image",
+			"url": "assets/bg.jpg"
+		},
+		{
+			"name": "egret_icon_png",
+			"type": "image",
+			"url": "assets/egret_icon.png"
+		},
+		{
+			"name": "description_json",
+			"type": "json",
+			"url": "config/description.json"
+		},
+		{
+			"name": "default.res_json",
+			"type": "json",
+			"url": "default.res.json"
+		},
+		{
+			"name": "ui_bigbox_hit_png",
+			"type": "image",
+			"url": "res/ui/ui_bigbox_hit.png"
+		},
+		{
+			"name": "ui_blackbase_png",
+			"type": "image",
+			"url": "res/ui/ui_blackbase.png"
+		},
+		{
+			"name": "ui_box_general_png",
+			"type": "image",
+			"url": "res/ui/ui_box_general.png"
+		},
+		{
+			"name": "ui_box_gift_png",
+			"type": "image",
+			"url": "res/ui/ui_box_gift.png"
+		},
+		{
+			"name": "ui_experience_png",
+			"type": "image",
+			"url": "res/ui/ui_experience.png"
+		},
+		{
+			"name": "ui_help_png",
+			"type": "image",
+			"url": "res/ui/ui_help.png"
+		},
+		{
+			"name": "ui_level_png",
+			"type": "image",
+			"url": "res/ui/ui_level.png"
+		},
+		{
+			"name": "ui_money_sec_png",
+			"type": "image",
+			"url": "res/ui/ui_money_sec.png"
+		},
+		{
+			"name": "ui_money_total_png",
+			"type": "image",
+			"url": "res/ui/ui_money_total.png"
+		},
+		{
+			"name": "ui_ranking_png",
+			"type": "image",
+			"url": "res/ui/ui_ranking.png"
+		},
+		{
+			"name": "ui_recycle_png",
+			"type": "image",
+			"url": "res/ui/ui_recycle.png"
+		},
+		{
+			"name": "ui_share_01_png",
+			"type": "image",
+			"url": "res/ui/ui_share_01.png"
+		},
+		{
+			"name": "ui_shop_png",
+			"type": "image",
+			"url": "res/ui/ui_shop.png"
+		},
+		{
+			"name": "ui_sound_close_png",
+			"type": "image",
+			"url": "res/ui/ui_sound_close.png"
+		},
+		{
+			"name": "ui_sound_open_png",
+			"type": "image",
+			"url": "res/ui/ui_sound_open.png"
+		},
+		{
+			"name": "ui_time_base_png",
+			"type": "image",
+			"url": "res/ui/ui_time_base.png"
+		},
+		{
+			"name": "ui_base_count_png",
+			"type": "image",
+			"url": "res/ui/ui_base_count.png"
+		},
+		{
+			"name": "scene_01_back_png",
+			"type": "image",
+			"url": "res/scene/scene_01_back.png"
+		},
+		{
+			"name": "scene_01_base_big_png",
+			"type": "image",
+			"url": "res/scene/scene_01_base_big.png"
+		},
+		{
+			"name": "scene_01_base_big_lock_png",
+			"type": "image",
+			"url": "res/scene/scene_01_base_big_lock.png"
+		},
+		{
+			"name": "scene_01_base_small_png",
+			"type": "image",
+			"url": "res/scene/scene_01_base_small.png"
+		},
+		{
+			"name": "scene_01_base_small_lock_png",
+			"type": "image",
+			"url": "res/scene/scene_01_base_small_lock.png"
+		},
+		{
+			"name": "scene_01_front_png",
+			"type": "image",
+			"url": "res/scene/scene_01_front.png"
+		},
+		{
+			"name": "bgSound",
+			"type": "sound",
+			"url": "res/sound/sound_bg.mp3"
+		},
+		{
+			"name": "sound_bg_mp3",
+			"type": "sound",
+			"url": "res/sound/sound_bg.mp3"
+		},
+		{
+			"name": "box_png",
+			"type": "image",
+			"url": "assets/box.png"
+		},
+		{
+			"name": "button_png",
+			"type": "image",
+			"url": "assets/button.png"
+		},
+		{
+			"name": "icon_png",
+			"type": "image",
+			"url": "assets/icon.png"
+		},
+		{
+			"name": "panel_png",
+			"type": "image",
+			"url": "assets/panel.png"
+		},
+		{
+			"name": "rankingtitle_png",
+			"type": "image",
+			"url": "assets/rankingtitle.png"
+		},
+		{
+			"name": "sound_box_down",
+			"type": "sound",
+			"url": "res/sound/sound_box_down.mp3"
+		},
+		{
+			"name": "sound_house_merge",
+			"type": "sound",
+			"url": "res/sound/sound_house_merge.mp3"
+		},
+		{
+			"name": "sound_house_new",
+			"type": "sound",
+			"url": "res/sound/sound_house_new.mp3"
+		},
+		{
+			"name": "sound_click",
+			"type": "sound",
+			"url": "res/sound/sound_click.mp3"
+		},
+		{
+			"name": "sound_close",
+			"type": "sound",
+			"url": "res/sound/sound_close.mp3"
+		},
+		{
+			"name": "sound_level_up",
+			"type": "sound",
+			"url": "res/sound/sound_level_up.mp3"
+		},
+		{
+			"name": "sound_newland",
+			"type": "sound",
+			"url": "res/sound/sound_land_new.mp3"
+		},
+		{
+			"name": "sound_house_merge_mp3",
+			"type": "sound",
+			"url": "res/sound/sound_house_merge.mp3"
+		},
+		{
+			"name": "start_bg",
+			"type": "image",
+			"url": "res/start_bg.jpg"
+		},
+		{
+			"name": "start_btn",
+			"type": "image",
+			"url": "res/start_btn.png"
+		},
+		{
+			"name": "e1_png",
+			"type": "image",
+			"url": "res/house/houses_a_001_small.png"
+		},
+		{
+			"name": "e2_png",
+			"type": "image",
+			"url": "res/house/houses_a_002_small.png"
+		},
+		{
+			"name": "e3_png",
+			"type": "image",
+			"url": "res/house/houses_a_003_small.png"
+		},
+		{
+			"name": "e4_png",
+			"type": "image",
+			"url": "res/house/houses_a_004_small.png"
+		},
+		{
+			"name": "e5_png",
+			"type": "image",
+			"url": "res/house/houses_a_005_small.png"
+		},
+		{
+			"name": "e6_png",
+			"type": "image",
+			"url": "res/house/houses_a_006_small.png"
+		},
+		{
+			"name": "e7_png",
+			"type": "image",
+			"url": "res/house/houses_a_007_small.png"
+		},
+		{
+			"name": "e8_png",
+			"type": "image",
+			"url": "res/house/houses_a_008_small.png"
+		},
+		{
+			"name": "ranking_close_png",
+			"type": "image",
+			"url": "res/ranking_close.png"
+		},
+		{
+			"name": "shop_close_png",
+			"type": "image",
+			"url": "res/ui/shop_close.png"
+		},
+		{
+			"name": "shop_money_01_png",
+			"type": "image",
+			"url": "res/ui/shop_money_01.png"
+		},
+		{
+			"name": "shop_money_02_png",
+			"type": "image",
+			"url": "res/ui/shop_money_02.png"
+		},
+		{
+			"name": "shop_new_png",
+			"type": "image",
+			"url": "res/ui/shop_new.png"
+		},
+		{
+			"name": "shop_reward_share_png",
+			"type": "image",
+			"url": "res/ui/shop_reward_share.png"
+		},
+		{
+			"name": "shop_reward_video_png",
+			"type": "image",
+			"url": "res/ui/shop_reward_video.png"
+		},
+		{
+			"name": "shop_base_png",
+			"type": "image",
+			"url": "res/ui/shop_base.png"
+		},
+		{
+			"name": "shop_buy_01_png",
+			"type": "image",
+			"url": "res/ui/shop_buy_01.png"
+		},
+		{
+			"name": "shop_buy_02_png",
+			"type": "image",
+			"url": "res/ui/shop_buy_02.png"
+		},
+		{
+			"name": "shop_buy_lock_png",
+			"type": "image",
+			"url": "res/ui/shop_buy_lock.png"
+		},
+		{
+			"name": "shop_card_png",
+			"type": "image",
+			"url": "res/ui/shop_card.png"
+		},
+		{
+			"name": "reclaim_base_png",
+			"type": "image",
+			"url": "res/ui/reclaim_base.png"
+		},
+		{
+			"name": "reclaim_cancel_png",
+			"type": "image",
+			"url": "res/ui/reclaim_cancel.png"
+		},
+		{
+			"name": "reclaim_check_png",
+			"type": "image",
+			"url": "res/ui/reclaim_check.png"
+		},
+		{
+			"name": "reclaim_sure_png",
+			"type": "image",
+			"url": "res/ui/reclaim_sure.png"
+		},
+		{
+			"name": "new_share_png",
+			"type": "image",
+			"url": "res/ui/new_share.png"
+		},
+		{
+			"name": "e7_black_png",
+			"type": "image",
+			"url": "res/house/houses_a_007_black.png"
+		},
+		{
+			"name": "e8_black_png",
+			"type": "image",
+			"url": "res/house/houses_a_008_black.png"
+		},
+		{
+			"name": "e1_black_png",
+			"type": "image",
+			"url": "res/house/houses_a_001_black.png"
+		},
+		{
+			"name": "e2_black_png",
+			"type": "image",
+			"url": "res/house/houses_a_002_black.png"
+		},
+		{
+			"name": "e3_black_png",
+			"type": "image",
+			"url": "res/house/houses_a_003_black.png"
+		},
+		{
+			"name": "e4_black_png",
+			"type": "image",
+			"url": "res/house/houses_a_004_black.png"
+		},
+		{
+			"name": "e5_black_png",
+			"type": "image",
+			"url": "res/house/houses_a_005_black.png"
+		},
+		{
+			"name": "e6_black_png",
+			"type": "image",
+			"url": "res/house/houses_a_006_black.png"
+		},
+		{
+			"name": "e8_big_png",
+			"type": "image",
+			"url": "res/house/houses_a_008_big.png"
+		},
+		{
+			"name": "e1_big_png",
+			"type": "image",
+			"url": "res/house/houses_a_001_big.png"
+		},
+		{
+			"name": "e2_big_png",
+			"type": "image",
+			"url": "res/house/houses_a_002_big.png"
+		},
+		{
+			"name": "e3_big_png",
+			"type": "image",
+			"url": "res/house/houses_a_003_big.png"
+		},
+		{
+			"name": "e4_big_png",
+			"type": "image",
+			"url": "res/house/houses_a_004_big.png"
+		},
+		{
+			"name": "e5_big_png",
+			"type": "image",
+			"url": "res/house/houses_a_005_big.png"
+		},
+		{
+			"name": "e6_big_png",
+			"type": "image",
+			"url": "res/house/houses_a_006_big.png"
+		},
+		{
+			"name": "e7_big_png",
+			"type": "image",
+			"url": "res/house/houses_a_007_big.png"
+		},
+		{
+			"name": "zero_config_json",
+			"type": "json",
+			"url": "res/json/zero_config.json"
+		},
+		{
+			"name": "available_buy_house_json",
+			"type": "json",
+			"url": "res/json/available_buy_house.json"
+		},
+		{
+			"name": "buy_house_config_json",
+			"type": "json",
+			"url": "res/json/buy_house_config.json"
+		},
+		{
+			"name": "housedown_config_json",
+			"type": "json",
+			"url": "res/json/housedown_config.json"
+		},
+		{
+			"name": "level_data_json",
+			"type": "json",
+			"url": "res/json/level_data.json"
+		},
+		{
+			"name": "loading_march_02_png",
+			"type": "image",
+			"url": "res/ui/loading_march_02.png"
+		},
+		{
+			"name": "loading_march_03_png",
+			"type": "image",
+			"url": "res/ui/loading_march_03.png"
+		},
+		{
+			"name": "loading_start_png",
+			"type": "image",
+			"url": "res/ui/loading_start.png"
+		},
+		{
+			"name": "loading_base_png",
+			"type": "image",
+			"url": "res/ui/loading_base.png"
+		},
+		{
+			"name": "loading_march_01_png",
+			"type": "image",
+			"url": "res/ui/loading_march_01.png"
+		},
+		{
+			"name": "map_data_json",
+			"type": "json",
+			"url": "res/json/map_data.json"
+		},
+		{
+			"name": "new_base_png",
+			"type": "image",
+			"url": "res/ui/new_base.png"
+		}
+	]
+}
