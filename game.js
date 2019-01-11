@@ -12,32 +12,58 @@ if(window.RES && RES.processor) {
     require('./library/binary.js');
 }
 
-egret.runEgret({
-    //以下为自动修改，请勿修改
-    //The following is automatically modified, please do not modify
-    //----auto option start----
+
+let runOptions = {
+  //以下为自动修改，请勿修改
+  //The following is automatically modified, please do not modify
+  //----auto option start----
 		entryClassName: "Main",
 		orientation: "auto",
-		frameRate: 30,
+		frameRate: 60,
 		scaleMode: "fixedWidth",
 		contentWidth: 640,
 		contentHeight: 1136,
 		showFPS: false,
-		fpsStyles: "x:0,y:0,size:12,textColor:0xffffff,bgAlpha:0.9",
+		fpsStyles: "x:0,y:0,size:36,textColor:0xffffff,bgAlpha:0.9",
 		showLog: false,
 		maxTouches: 2,
 		//----auto option end----
-    renderMode: 'webgl',
-    audioType: 0,
-    calculateCanvasScaleFactor: function (context) {
-        var backingStore = context.backingStorePixelRatio ||
-            context.webkitBackingStorePixelRatio ||
-            context.mozBackingStorePixelRatio ||
-            context.msBackingStorePixelRatio ||
-            context.oBackingStorePixelRatio ||
-            context.backingStorePixelRatio || 1;
-        return (window.devicePixelRatio || 1) / backingStore;
-    }
-});
+  audioType: 0,
+  calculateCanvasScaleFactor: function (context) {
+    var backingStore = context.backingStorePixelRatio ||
+      context.webkitBackingStorePixelRatio ||
+      context.mozBackingStorePixelRatio ||
+      context.msBackingStorePixelRatio ||
+      context.oBackingStorePixelRatio ||
+      context.backingStorePixelRatio || 1;
+    return (window.devicePixelRatio || 1) / backingStore;
+  }
+};
 
-// require("egret.min.js")
+const runEgret = function () {
+  egret.runEgret(runOptions);
+}
+
+if (wx.loadSubpackage) {
+  // console.log("subpackage");
+  require("./EgretSubPackageLoading.js");
+  runOptions.entryClassName = "EgretSubPackageLoading";
+  runEgret();
+  let task = wx.loadSubpackage({
+    // 开发者根据自身需求更改
+    name: "resource",
+    success: function () {
+      EgretSubPackageLoading.instance.onSuccess();
+    }
+  });
+
+  task.onProgressUpdate(res => {
+    EgretSubPackageLoading.instance.setProgress(res);
+  })
+}
+else {
+  //
+  require("./resource/res/game.js");
+  runEgret();
+}
+
