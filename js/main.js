@@ -828,7 +828,7 @@ var CommonFuction = (function () {
      * 数字去零计算
      */
     CommonFuction.numZero = function (num) {
-        console.log("数字去0计算" + num);
+        // console.log("数字去0计算"+num);
         var numString;
         if (typeof (num) == "number") {
             numString = Math.floor(num).toString();
@@ -1360,6 +1360,7 @@ var GameData = (function () {
     GameData.levelReqExp = 0; //当前关卡过关需要的经验值,
     GameData.levelCoin = '0'; //当前关卡过关奖励的金币,
     GameData.boxDownWeight = 0; //当前关卡箱子掉落权重
+    GameData.ordinaryBoxHouseGrade = 1; //当前关卡普通箱打开房子等级
     GameData.giftBoxHouseGrade = 2; //当前关卡礼物箱打开房子等级
     //舞台宽高，此封装为了方便调用
     GameData.stageW = 0;
@@ -1389,6 +1390,7 @@ var LevelGameDataParse = (function () {
         }
         GameData.levelReqExp = val.up_exp;
         GameData.boxDownWeight = Number(val.down_weight);
+        GameData.ordinaryBoxHouseGrade = Number(val.ordinarybox_lv);
         GameData.giftBoxHouseGrade = Number(val.seniorbox_lv);
     };
     return LevelGameDataParse;
@@ -1682,7 +1684,7 @@ var GameLogic = (function () {
             GameLogic.guide = false;
         }
         else {
-            GameLogic.guide = false; //默认第一关true
+            GameLogic.guide = true; //默认第一关true
         }
         var lec = new egret.Sprite();
         this._gameStage.addChild(lec);
@@ -1955,7 +1957,7 @@ var GameLogic = (function () {
             this.gameoverpanel.addEventListener(ElementViewManageEvent.GAME_OVER, this.init, this);
         }
     };
-    GameLogic.version = "1.12.1"; //新手引导
+    GameLogic.version = "1.13.1"; //新手引导
     return GameLogic;
 }());
 __reflect(GameLogic.prototype, "GameLogic");
@@ -2401,7 +2403,7 @@ var ChangeScenePanel = (function (_super) {
         //console.log("场景解锁:");        
         var scenes = new egret.Sprite();
         var sceneName = ["海岸绿野", "黄金农场", "塞北雪乡", "缤纷小镇", "不夜之城"];
-        var unlockedLevel = [1, 5, 12, 20, 31];
+        var unlockedLevel = [1, 6, 15, 25, 35];
         scenes.width = GameData.stageW * 0.965;
         var n = 0;
         if (GameData.setSceneId > 0) {
@@ -2599,7 +2601,9 @@ var ElementView = (function (_super) {
         var evt2 = new ElementViewManageEvent(ElementViewManageEvent.GUIDE_STEP_TWO);
         var evt3 = new ElementViewManageEvent(ElementViewManageEvent.GUIDE_STEP_THREE);
         if (GameData.elements[this.id].type == "b0") {
-            GameData.elements[this.id].grade = 1;
+            if (GameData.elements[this.id].grade == 0) {
+                GameData.elements[this.id].grade = GameData.ordinaryBoxHouseGrade;
+            }
             SoundUtils.instance().playOpenBoxSound();
         }
         else if (GameData.elements[this.id].type == "b1") {
@@ -2608,6 +2612,7 @@ var ElementView = (function (_super) {
             }
             SoundUtils.instance().playOpenGiftBoxSound();
         }
+        // console.log(GameData.elements[this.id].grade);
         GameData.elements[this.id].type = "0";
         this.setTexture("house#houses_a_" + this.addPreZero(GameData.elements[this.id].grade) + "_big");
         GameData.elements[this.id].time = new Date().getTime(); //创建时间
@@ -2761,7 +2766,7 @@ var ElementView = (function (_super) {
         this.evm.delOver(eover);
     };
     /*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
-    /*-------------------------移动到新位置，方块被消除后重新生成下落使用---------------------------------*/
+    /*-------------------------移动到新位置---------------------------------*/
     /**
      * 播放曲线动画
      */
@@ -2777,7 +2782,7 @@ var ElementView = (function (_super) {
         this.evm.updateMap(evt);
     };
     /*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
-    //根据列编号，重新计算元素X轴位置，从其实Y轴开始播放下落动画
+    //
     ElementView.prototype.moveNewLocation = function () {
         //console.log(this.id,this.parent);
         if (!this.parent) {
@@ -3212,15 +3217,15 @@ var ElementViewManage = (function (_super) {
             this.ev.time = GameData.elements[this.ev.id].time;
             this.ev.grade = GameData.elements[this.ev.id].grade ? GameData.elements[this.ev.id].grade : 1;
             if (GameData.elements[this.ev.id].time != 0) {
-                this.addLevelExp(this.ev.grade); //开箱子加经验值
-                this._levelExpLabel.text = GameData.levelExp.toString() + "/" + GameData.levelReqExp.toString();
                 // //console.log(GameData.levelExp);
                 // this.showElementById(this.ev.id,false);
-                // this.ev.x  = this.ev.targetX();
-                // this.ev.y  = this.ev.targetY() - this.ev.height/2;
+                this.ev.x = this.ev.targetX();
+                this.ev.y = this.ev.targetY() - this.ev.height / 2;
                 this.ev.show(100);
-                var evt_1 = new ElementViewManageEvent(ElementViewManageEvent.LEVEL_EXP_UP);
-                this.levelExpUp(evt_1);
+                this.addLevelExp(this.ev.grade); //开箱子加经验值
+                this._levelExpLabel.text = GameData.levelExp.toString() + "/" + GameData.levelReqExp.toString();
+                // let evt:ElementViewManageEvent = new ElementViewManageEvent(ElementViewManageEvent.LEVEL_EXP_UP);
+                // this.levelExpUp(evt);
             }
             this._touchStatus = false;
             // this._currentTapID =this. ev.id;
@@ -3395,10 +3400,10 @@ var ElementViewManage = (function (_super) {
                     // this.newHousePanel.getNewHosuePanel(this.elementViews[ev1.id].grade+1);
                     GameData.newHouse = true;
                     var evt = new ElementViewManageEvent(ElementViewManageEvent.OPEN_NEW_HOUSE_PANEL);
-                    evt.grade = this.elementViews[ev1.id].grade + 1;
+                    evt.grade = Number(this.elementViews[ev1.id].grade) + 1;
                     this.dispatchEvent(evt);
-                    if (this.elementViews[ev1.id].grade + 1 >= GameData.maxHouseGrade) {
-                        GameData.maxHouseGrade = this.elementViews[ev1.id].grade + 1; //当前获得房屋最高等级
+                    if (Number(this.elementViews[ev1.id].grade) + 1 >= GameData.maxHouseGrade) {
+                        GameData.maxHouseGrade = Number(this.elementViews[ev1.id].grade) + 1; //当前获得房屋最高等级
                     }
                     if (GameData.maxHouseGrade == 2) {
                         // this.addHelpTip();
@@ -3410,7 +3415,7 @@ var ElementViewManage = (function (_super) {
                     SoundUtils.instance().playNewHouseSound(); //播放获得新房子音效
                 }
                 else {
-                    this.addLevelExp(GameData.elements[ev2.id].grade + 1); //根据新和成的房子等级加经验值
+                    this.addLevelExp(Number(GameData.elements[ev2.id].grade) + 1); //根据新和成的房子等级加经验值
                 }
                 //console.log("消除动画");
                 if (GameData.elements[ev1.id].type !== 'b0' && GameData.elements[ev1.id].type !== 'b1') {
@@ -3421,7 +3426,7 @@ var ElementViewManage = (function (_super) {
                 // //console.log("mapData删除后的值"+GameData.mapData[i][t]);					
                 this.elementViews[ev1.id].grade = GameData.elements[ev1.id].grade = 0; //删除的元素级别置为0
                 this.elementViews[ev1.id].time = GameData.elements[ev1.id].time = 0; //删除后元素的创建时间置为0;
-                GameData.elements[ev2.id].grade = GameData.elements[ev2.id].grade + 1; //合并后升级
+                GameData.elements[ev2.id].grade = Number(GameData.elements[ev2.id].grade) + 1; //合并后升级
                 this.elementViews[ev2.id].grade = GameData.elements[ev2.id].grade;
                 this._levelExpLabel.text = GameData.levelExp.toString() + "/" + GameData.levelReqExp.toString();
                 this.barMask = new egret.Rectangle(0, 0, GameData.levelExp / GameData.levelReqExp * this._expBar.width, this._expBar.height);
@@ -3430,7 +3435,8 @@ var ElementViewManage = (function (_super) {
                 this.openBoxEffect(ev2.id); //合成房子特效
                 this.showElementById(ev2.id, false);
                 this.starHandler(ev2.targetX(), ev2.targetY());
-                this.elementViews[ev2.id].time = GameData.elements[ev2.id].time = new Date().getTime(); //合并时间;
+                GameData.elements[ev2.id].time = new Date().getTime(); //合并时间;
+                this.elementViews[ev2.id].time = GameData.elements[ev2.id].time;
                 if (GameData.availableMapId.length == 0) {
                     this.timer.start();
                     if (!this.helpHandleTimer.running) {
@@ -3680,7 +3686,7 @@ var ElementViewManage = (function (_super) {
      * 生成免费分享奖励
      */
     ElementViewManage.prototype.addReward = function () {
-        console.log("生成免费奖励图标");
+        // console.log("生成免费奖励图标");
         this._rewardShareIcon = ResourceUtils.createBitmapByName("shop#shop_bubble_png");
         this._rewardShareIcon.x = GameData.stageW - 15 - GameData.girdWidth * 0.93 - this._rewardShareIcon.width;
         this._rewardShareIcon.y = GameData.stageH - GameData.girdWidth * 0.966 - 30;
@@ -3757,7 +3763,7 @@ var ElementViewManage = (function (_super) {
     ElementViewManage.prototype.addCoin = function () {
         // console.log("生成免费奖励次数："+this.rewardTimer.repeatCount);
         // console.log("生成免费奖励当前次数："+this.rewardTimer.currentCount);	
-        console.log(this.rewardTimer.repeatCount - this.rewardTimer.currentCount);
+        // console.log(this.rewardTimer.repeatCount - this.rewardTimer.currentCount);	
         // //console.log("每秒加金币："+GameData.secCoin);
         var secTotalcoin = this.addSecCoin();
         // let gbg= new GameBackGround();
@@ -6266,6 +6272,9 @@ var WelcomeRetrunPanel = (function (_super) {
         var timeDiffrent = Math.floor((currentTime - due) / 1000); //计算离线时间，单位秒
         if (timeDiffrent >= 8 * 60 * 60) {
             timeDiffrent = 8 * 60 * 60; //最多计算8小时的收益
+        }
+        if (GameBackGround.hTimerStatus) {
+            secCoin = CommonFuction.chu(secCoin, 5);
         }
         this.profitNum = CommonFuction.cheng(secCoin, timeDiffrent.toString());
         var profit = this.numZero(this.profitNum);

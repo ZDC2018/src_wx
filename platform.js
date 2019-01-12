@@ -31,9 +31,9 @@ class WxgamePlatform {
     
     share(query) {
       let shareArr = [
-		{title: " @我，猜一下，这是哪个城市的夜景？",url: "shareImg/fx01.png"},
-		{title: "考古学家高度还原始部落，原来长这样！！",url: "shareImg/fx02.png"},
-		{title: "你绝对不敢相信，这是地球上真实存在的漂浮岛！！",url: "shareImg/fx03.png"},
+		{title: "2018年大学毕业工资出炉，看看你的学校排名是多少？",url: "shareImg/fx01.jpg"},
+		{title: "2019年全年公休放假大调整",url: "shareImg/fx02.jpg"},
+		{title: "KTV再次下架8848首歌，哪一首最可惜？",url: "shareImg/fx03.jpg"},
 		{title: " @我，这个目标真的很小……",url: "shareImg/fx04.png"},
 		{title: "老板，您的房子到了！",url: "shareImg/fx05.png"}];
       

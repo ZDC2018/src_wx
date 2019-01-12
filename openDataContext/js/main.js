@@ -88,7 +88,7 @@ var Main = (function (_super) {
                 wx.getFriendCloudStorage({
                     keyList: ["score"],
                     success: function (res) {
-                        // console.log(res);
+                        console.log(res.data);
 						sortList(res.data, false);
 						_this.gameData = res.data;
 						var selfDataIndex = null;
@@ -219,8 +219,8 @@ var Main = (function (_super) {
     Main.prototype.runGame = function () {
 		// console.log('运行排行榜子项目');
 		var sharedCanvas = wx.getSharedCanvas();
-		console.log(sharedCanvas.width);
-		console.log(sharedCanvas.height);
+		// console.log(sharedCanvas.width);
+		// console.log(sharedCanvas.height);
         var _this = this;
         var bitmap = new egret.Bitmap(this.ranking_base);
 		var stageWidth = window["sharedCanvas"].width;
@@ -250,12 +250,12 @@ var Main = (function (_super) {
 		var intervalX = barWidth / 20;
 		var textOffsetY = (barHeight + fontSize) / 2;
 		var textMaxSize = barWidth / 3;
-		console.log(stageWidth);
-		console.log(stageHeight);
-		console.log(rankWidth);
-		console.log(rankHeight);
-		console.log(bitmap.x);
-		console.log(bitmap.y);
+		// console.log(stageWidth);
+		// console.log(stageHeight);
+		// console.log(rankWidth);
+		// console.log(rankHeight);
+		// console.log(bitmap.x);
+		// console.log(bitmap.y);
 		// console.log(preOffsetY);
         this.addChild(bitmap);
         var listContainer = new egret.Sprite();
@@ -512,9 +512,9 @@ function sortList(ListData, order){ //排序(ListData：res.data;order:true降�
 			}
 		}else{
 			if(order){
-				return parseInt(AMaxScore) - parseInt(BMaxScore);
+				return parseFloat(AMaxScore) - parseFloat(BMaxScore);
 			}else{
-				return parseInt(BMaxScore) - parseInt(AMaxScore);
+				return parseFloat(BMaxScore) - parseFloat(AMaxScore);
 			}	
 		}
 	});
@@ -550,20 +550,13 @@ function shanchuling(result) {
 		return result;
 	}
 	//把字符串分割成数组
-	result = result.split('');	
-	//获取数组长度
-	var hebing = result.length;
-	for(var j=0; j<hebing; j++) {
-		//判断数组首位是否为0
-		if(result[0] == 0) {
-			//把数组首位删掉
+	result = result.split('');
+	for(var j=0; j<=result.length; j++) {
+		if(result[0] == 0 || result[0] == '.') {
 			result.splice(0,1);
 		}
-		else {
-			//删除完了就跳出循环
-			break;
-		}
 	}
+	result = result.join("");
 	//返回最终字符串
 	return result;		
 }
