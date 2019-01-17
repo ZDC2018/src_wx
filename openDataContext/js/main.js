@@ -240,10 +240,10 @@ var Main = (function (_super) {
 		var	textOffsetY = (barHeight + fontSize) / 2;
 		var	textMaxSize = barWidth / 3;
 		
-		bitmap.x = (640 - rankWidth)/2;
-        bitmap.y = (1136 - rankHeight);
-		// bitmap.x = (stageWidth - rankWidth)/2;
-        // bitmap.y = (stageHeight - rankHeight)/2;
+		// bitmap.x = (640 - rankWidth)/2;
+        // bitmap.y = (1136 - rankHeight);
+		bitmap.x = (this.stage.stageWidth - rankWidth)/2;
+        bitmap.y = (this.stage.stage.stageHeight - rankHeight)/2;
 		var startX = bitmap.x + (rankWidth - barWidth) / 2;
 		var startY = bitmap.y + preOffsetY + barHeight/2 +10;
 		var avatarSize = barHeight*4/5 - 10;

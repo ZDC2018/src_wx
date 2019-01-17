@@ -128,12 +128,14 @@ class WxgamePlatform {
 		// console.log("微信退出前台");
 		})
 	}
-	getLaunchOptionsSync(){
+	
+	getLaunchOptionsSync(fun, obj){
 		
-		let wxData =wx.getLaunchOptionsSync();
-		// console.log(wxData);
-		return new Promise((resolve,reject) => {
+		wx.getLaunchOptionsSync(function (res){
+			fun.call(obj);
+			return new Promise((resolve,reject) => {
 			resolve(wxData);
+		})
 		})
 	}
 	
@@ -311,11 +313,11 @@ class WxgamePlatform {
 		})
 	}
 	
-	createRewardedVideoAd(){
+	createRewardedVideoAd(id){
 		var sysInfo = wx.getSystemInfoSync();
 		var sdkVersion = sysInfo.SDKVersion;
 		if (this.compareVersion(sdkVersion, '2.0.4') >= 0) {
-			this.rewardedVideoAd = wx.createRewardedVideoAd({adUnitId: 'adunit-0fb861fe7b1ca7fe'})
+			this.rewardedVideoAd = wx.createRewardedVideoAd({adUnitId: id})
 			console.log(this.rewardedVideoAd);
 			return this.rewardedVideoAd;	
 		}else{
